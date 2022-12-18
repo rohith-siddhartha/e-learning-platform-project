@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.field {
+    margin: 20px;
+}

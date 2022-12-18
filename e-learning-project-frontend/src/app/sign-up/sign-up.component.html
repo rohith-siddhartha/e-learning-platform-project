@@ -1,0 +1,62 @@
+<form [formGroup]="signUpForm" (ngSubmit)="submit()" >
+
+    <div class="field" style="font-weight: bolder; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #59349e;">
+
+        <h1> Sign Up </h1>
+
+    </div>
+
+    <div class="field">
+
+        <mat-form-field appearance="fill">
+            <mat-label>email</mat-label>
+            <input matInput [formControl]="email">
+            <!-- <mat-hint>username must be unique !!</mat-hint> -->
+        </mat-form-field>
+
+    </div>
+    
+    <div class="field">
+
+        <mat-form-field appearance="fill">
+            <mat-label>username</mat-label>
+            <input matInput [formControl]="username">
+            <mat-hint>username must be unique !!</mat-hint>
+        </mat-form-field>
+
+    </div>
+
+    <div class="field">
+        
+        <mat-form-field appearance="fill">
+            <mat-label>password</mat-label>
+            <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint>password length must be greater than 6 !!</mat-hint>
+        </mat-form-field>
+
+    </div>
+
+    <div class="field">
+
+        <mat-form-field appearance="fill">
+            <mat-label> you are a </mat-label>
+            <mat-select name="food" [formControl]="role">
+            <mat-option *ngFor="let role of roles" [value]="role">
+                {{role}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div>
+
+        <button mat-raised-button color="primary" type="submit" style="margin: 10px; margin-left: 20px;" [disabled]="signUpForm.invalid" >submit</button>
+        <button mat-raised-button color="warn" type="button" class="field" (click)="closeForm()">close</button>
+
+    </div>
+
+</form>

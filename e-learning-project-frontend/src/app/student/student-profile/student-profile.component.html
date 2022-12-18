@@ -1,0 +1,67 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4" id="profile">
+            <mat-card id="profileCard"  *ngIf="user">
+                <h1 id="heading" >Your Profile Details</h1>
+                <!-- {{ user | json }} -->
+                <mat-card-content>
+                  <div class="bootstrap-wrapper">
+                    <div class="container">
+                      <div id="image" class="container text-center">
+                        <img 
+                          src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                          alt=""
+                          class="profile-image"
+                        />
+                      </div>
+              
+                      <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                          <!-- //table Details  -->
+                          <table id="profileText"  class="table text-center">
+                            <tr class="field">
+                              <td>User Name: </td>
+                              <td>{{ user.username }}</td>
+                            </tr>
+                            <tr class="field">
+                              <td>Email: </td>
+                              <td>{{ user.email }}</td>
+                            </tr>
+                            <tr class="field">
+                              <td class="field">First Name:</td>
+                              <td>{{ user.firstName }}</td>
+                            </tr>
+                            <tr class="field">
+                              <td>Last Name: </td>
+                              <td>{{ user.lastName }}</td>
+                            </tr>
+                            <tr class="field">
+                              <td>Role: </td>
+                              <td>{{ user.role }}</td>
+                            </tr>
+                            <tr class="field">
+                              <td>About: </td>
+                              <td>{{ user.about }}</td>
+                            </tr>
+                            
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions id="profileButtons" class="text-center">
+                  <button mat-raised-button color="primary" (click)="openUpdateForm()">UPDATE</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+  
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
+  </div>
+  

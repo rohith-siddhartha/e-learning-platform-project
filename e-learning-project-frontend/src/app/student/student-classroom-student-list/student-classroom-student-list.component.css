@@ -1,0 +1,17 @@
+#profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#notice {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin: 10px;
+    width: 400px;
+    /* max-width: 50%; */
+    height: 30px;
+    border: 1px;
+    border-style: 1px;
+}

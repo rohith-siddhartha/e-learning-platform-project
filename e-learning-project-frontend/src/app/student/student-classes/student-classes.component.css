@@ -1,0 +1,13 @@
+.example-card {
+
+    width: 80%;
+    height: 210px;
+    box-shadow:  5px 5px 15px rgba(0,0,0,0.4);
+
+  }
+
+  #title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 499;
+    color: black;
+  }

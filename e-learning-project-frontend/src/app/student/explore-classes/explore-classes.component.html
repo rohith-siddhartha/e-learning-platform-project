@@ -1,0 +1,58 @@
+  <div style="margin: 20px;">
+    <button mat-button [matMenuTriggerFor]="menu" style="margin-left: 90%;">Filter by Category <span class="material-symbols-outlined">
+      arrow_drop_down
+      </span></button>
+      <mat-menu #menu="matMenu" style="width: 100px; height: 200px; padding: 10px;" >
+        <div *ngFor="let category of categoriesCheckboxMap">
+          <mat-checkbox class="example-margin" [(ngModel)]="category.checked" style="margin: 10px;" (change)="function()">{{category.category}}</mat-checkbox>
+        </div>
+      </mat-menu>
+  </div>
+
+  <div>
+
+    <mat-grid-list cols="4" rowHeight="280px">
+        <mat-grid-tile *ngFor="let class of classesData | slice: lowValue : highValue">
+    
+            <mat-card class="example-card">
+              <div style="margin-bottom: 20px;">
+                  <mat-card-title>{{class.title}}</mat-card-title>
+              </div>
+                
+              <div>
+                <mat-card-content>
+                  <p>
+                    {{class.description }}
+                  </p>
+                  <p *ngIf="class.instructors[0]"> Instructor: {{class.instructors[0].username }}</p>
+                  <p> {{class.students.length}} students </p>
+                </mat-card-content>
+              </div>
+                
+              <div style="width: 100%;">
+                <mat-card-actions>
+                  <button mat-button (click)="openEnrolForm(class)" mat-raised-button color="primary" style="margin-left:70%; font-size:16px;">Enrol</button>
+                </mat-card-actions>
+              </div>
+                
+              </mat-card>
+    
+        </mat-grid-tile>
+      </mat-grid-list>
+
+  </div>
+
+  <!-- <div class="col-md-3" *ngFor="let productObj of classes | slice: lowValue : highValue">
+    {{productObj.id}} 
+</div> -->
+
+<!-- <mat-paginator [length]="classes.length" [pageSize]="pageSize" 
+(page)="getPaginatorData($event)">
+</mat-paginator>  -->
+
+<mat-paginator [length]="classesData.length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="getPaginatorData($event)">
+</mat-paginator>

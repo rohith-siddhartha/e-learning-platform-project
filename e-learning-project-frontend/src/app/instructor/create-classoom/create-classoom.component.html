@@ -1,0 +1,74 @@
+<h1 id="heading" color="primary"> Create a new classroom </h1>
+  <div class="stepperContainer">
+
+    <mat-stepper [linear]="false" #stepper orientation="vertical">
+
+      <div >
+
+        <mat-step [stepControl]="firstFormGroup" class="stepperContainer">
+          <form [formGroup]="firstFormGroup" class="form">
+            <ng-template matStepLabel>Classroom Details</ng-template>
+            <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Give your classroom a title</mat-label>
+              <input matInput placeholder="title" [formControl]="title" required>
+            </mat-form-field>
+          </div>
+    
+          <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Add description about your classroom</mat-label>
+              <textarea matInput placeholder="Ex. It makes me feel..." [formControl]="description" style="height: 100px; width: 200px"></textarea>
+            </mat-form-field>
+          </div>
+    
+            <div>
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+      </div>
+      
+      <div class="step">
+
+        <mat-step class="step" [stepControl]="secondFormGroup" label="Fill out your address">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Classroom categories</ng-template>
+            <div>
+
+              <section class="example-section">
+                <h4>Select the categories to which your classroom belong:</h4>
+                <p *ngFor="let category of categoryNames"><mat-checkbox [formControl]="Categories.get(category)">{{category}}</mat-checkbox></p>
+              </section>
+
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+      </div>
+
+      <div class="step">
+
+        <mat-step class="step">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel> Finish up</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Classroom capacity</mat-label>
+              <input matInput type="number" [formControl]="capacity" required>
+            </mat-form-field>
+          </form>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+          </div>
+        </mat-step>
+
+      </div>
+      
+    </mat-stepper>
+
+  </div>

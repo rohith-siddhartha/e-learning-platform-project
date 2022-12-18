@@ -1,0 +1,32 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+
+  .stepperContainer{
+    width: fit-content;
+    margin: 0 auto;
+    height: fit-content;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+
+  #heading {
+    margin: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .form {
+    width: 200px;
+  }

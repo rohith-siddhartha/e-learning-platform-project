@@ -1,0 +1,67 @@
+<div>
+
+    <form [formGroup]="updateForm" (ngSubmit)="submit()" id="form">
+
+        <div class="field" style="font-weight: bolder; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #59349e;">
+    
+            <h1> Update Form </h1>
+    
+        </div>
+        
+        <div class="field">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>username</mat-label>
+                <input matInput [formControl]="username">
+            </mat-form-field>
+    
+        </div>
+
+        <div class="field">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="email">
+            </mat-form-field>
+    
+        </div>
+
+        <div class="field">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input matInput [formControl]="firstName">
+            </mat-form-field>
+    
+        </div>
+
+        <div class="field">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput [formControl]="lastName">
+            </mat-form-field>
+    
+        </div>
+
+        <div class="field">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>About</mat-label>
+                <input matInput [formControl]="about">
+            </mat-form-field>
+    
+        </div>
+    
+        
+    
+        <div class="field">
+    
+            <button mat-raised-button type="submit" id="button" [disabled]="updateForm.invalid" >Update</button>
+            <button mat-raised-button color="warn" type="button" class="field" (click)="closeForm()">close</button>
+    
+        </div>
+    
+    </form>
+
+</div>

@@ -1,0 +1,41 @@
+  <div class="bootstrap-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4" id="card">
+
+          <div>
+
+            <div style="margin:20px" *ngIf="enrollmentRequests.length === 0">
+
+              <span style="font-weight: 300; font-size: 30px;"> No new enrollment requests </span>         
+
+            </div>
+            
+            <div *ngFor="let enrollmentRequest of enrollmentRequests">
+
+                <mat-card class="example-card" id="rectangle">
+                    <mat-card-title style="margin-bottom: 20px;"> <i style="font-weight: 400;"> {{enrollmentRequest.name}}   </i> <span style="font-weight: 300;">   wants to enrol to your classroom - </span> 
+                      <i style="font-weight: 400;"> {{enrollmentRequest.classroom.title}}   </i>  </mat-card-title>
+                    <mat-card-content>
+                        <p> His message - </p>
+                      <i> "{{enrollmentRequest.motivation}}" </i>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-raised-button style="background-color: rgba(20, 184, 20, 0.815); color: white;" (click)="enrolStudent(enrollmentRequest)">Accept</button>
+                      <button mat-raised-button color="warn" (click)="discardEnrollment(enrollmentRequest)">Reject</button>
+                    </mat-card-actions>
+                  </mat-card>
+
+            </div>
+
+          </div>
+
+        </div>
+  
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
+  </div>

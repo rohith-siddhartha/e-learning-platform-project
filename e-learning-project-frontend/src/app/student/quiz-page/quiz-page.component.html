@@ -1,0 +1,131 @@
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+          <!-- questions -->
+          <ng-container *ngIf="questions">
+            <h1 class="mt20" style="width: 50%; margin-left: 40%;">
+              On Going Quiz <b>{{ quiz.title }}</b>
+            </h1>
+          </ng-container>
+
+          <div class="col-md-2" style="width: 50%; margin-left: 25%; align-content: center;">
+            <!-- progress -->
+    
+            <h1 style="margin-left: 30%; font-weight: 200;"> Time Left : {{ getFormattedTime() }} </h1>
+          </div>
+  
+          <mat-card *ngFor="let q of questions; let i = index;" class="notice" style="width: 50%; margin: 20px; margin-left: 25%;">
+            <mat-card-content>
+              <p>
+                <b>Q {{ i + 1 }})</b>
+                <span class="ml10"> {{q.title}} </span>
+              </p>
+              <p>
+                <span class="ml10" [innerHTML]="q.description"></span>
+              </p>
+  
+              <mat-divider> </mat-divider>
+              <br />
+  
+              <div class="row mt20">
+                <div class="col-md-6">
+                  <input
+                    type="radio"
+                    [value]="q.options[0]"
+                    [name]="i.toString()"
+                    [ngModel]="answersMap.get(q.id)" 
+                    (ngModelChange)="answersMap.set(q.id, $event)"
+                  />{{ q.options[0] }}
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="radio"
+                    [value]="q.options[1]"
+                    [name]="i.toString()"
+                    [ngModel]="answersMap.get(q.id)" 
+                    (ngModelChange)="answersMap.set(q.id, $event)"
+                  />{{ q.options[1] }}
+                </div>
+              </div>
+  
+              <div class="row mt20">
+                <div class="col-md-6">
+                  <input
+                    type="radio"
+                    [value]="q.options[2]"
+                    [name]="i.toString()"
+                    [ngModel]="answersMap.get(q.id)" 
+                    (ngModelChange)="answersMap.set(q.id, $event)"
+                  />{{ q.options[2] }}
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="radio"
+                    [value]="q.options[3]"
+                    [name]="i.toString()"
+                    [ngModel]="answersMap.get(q.id)" 
+                    (ngModelChange)="answersMap.set(q.id, $event)"
+                  />{{ q.options[3] }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+  
+          <div class="container text-center mt20 mb20" style="width: 50%; margin: 20px; margin-left: 45%;">
+            <button (click)="submitQuiz()" mat-raised-button color="primary">
+              Submit Quiz
+            </button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- show the result -->
+  <div class="bootstrap-wrapper" *ngIf="isSubmit">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-3">
+
+        <mat-card id="profileCard">
+          <h1 id="heading" style="margin-left: 30%;" >Result</h1>
+          <!-- {{ user | json }} -->
+          <mat-card-content style="margin-left: 20%;" >
+            <div class="bootstrap-wrapper">
+              <div class="container">
+        
+                <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                    <!-- //table Details  -->
+                    <table id="profileText"  class="table text-center">
+                      <tr class="field">
+                        <td>Marks scored:  </td>
+                        <td>{{ marksScored }}</td>
+                      </tr>
+                      <tr class="field">
+                        <td>Correct answers:  </td>
+                        <td>{{ correctAnswers }}</td>
+                      </tr>
+                      <tr class="field">
+                        <td class="field">Attempted:  </td>
+                        <td>{{ attempted }}</td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions id="profileButtons" class="text-center">
+
+            <button mat-raised-button color="primary" style="margin-left: 30%;" [routerLink]="'/student/'"> Go Back </button>
+          </mat-card-actions>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>

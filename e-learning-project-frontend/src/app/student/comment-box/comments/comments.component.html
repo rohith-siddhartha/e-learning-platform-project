@@ -1,0 +1,31 @@
+   <div style="margin: 20px;">
+
+      <mat-card-title style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 24px; font-weight: 400;"> {{comment.username}} </mat-card-title>
+        <mat-card-subtitle>Commented On {{comment.commentedOn | date:'medium'}} </mat-card-subtitle>
+      <!-- </mat-card-header> -->
+      <mat-card-content>
+        <p> - {{comment.content}} </p>
+      </mat-card-content>
+      <mat-card-actions style="margin-left: 40%;">
+          <button mat-button color="primary" (click)="reply()" >reply</button>
+        <button mat-button color="primary" (click)="viewReplies()" > {{replyText}} </button>
+      </mat-card-actions>
+  
+      <div style="margin: 20px;" [hidden]="replyBox">
+          <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Post a reply</mat-label>
+              <textarea matInput [(ngModel)]="commentData.content"></textarea>
+            </mat-form-field>
+            <button mat-raised-button  color="primary" (click)="addComment(comment)" style="margin-left: 70%;">comment</button>
+      </div>
+  
+          <div [hidden]="replies">
+  
+            <hr class="solid" style="border-top: 1px solid #bbb; margin-left: 10px; margin-right: 10px;">
+  
+              <app-comments *ngFor="let comment of comment.replies" [comment]="comment" [notice]="notice" ></app-comments>
+  
+          </div>
+            <!-- </mat-card> -->
+            <hr class="solid" style="border-top: 1px solid #bbb; margin-left: 10px; margin-right: 10px;">
+      </div>

@@ -1,0 +1,95 @@
+<mat-card id="notice" style="text-align: center; width: 40%; margin-left: 30%; background-color: #59349ee5;">
+  <mat-card-content> <span style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 28px; color: aliceblue; text-align: center; font-weight: 400;"> {{ classroom.title }} </span> 
+  
+
+    <!-- <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 20px; float: right; font-style: italic; color: aliceblue; font-weight: 400;"> {{ classroom.students.length }} students </span> -->
+  
+  </mat-card-content>
+</mat-card>
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Notices">
+
+        <div class="bootstrap-wrapper">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4">
+                </div>
+                
+                <div class="col-md-4" id="profile">
+
+                  <div>
+
+                    <div style="margin:20px" *ngIf="notices === null ||  notices.length === 0">
+
+                      <span style="font-weight: 300; font-size: 20px;"> No notices yet</span>         
+        
+                    </div>
+
+                    <div *ngFor="let notice of notices">
+                      <mat-card class="example-card" id="notice">
+                          <mat-card-title>{{notice.title}}</mat-card-title>
+                          <mat-card-content>
+                            <p>{{notice.description}}</p>
+                            <p>Posted on: {{notice.createdOn | date:'medium'}}</p>
+                          </mat-card-content>
+                          <mat-card-actions>
+                            <button mat-raised-button color="primary" style="margin-left: 80%;" (click)="commentBox(notice)">comments</button>
+                          </mat-card-actions>
+                        </mat-card>
+                      </div>
+                  </div>
+
+                </div>
+          
+                <div class="col-md-4">
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </mat-tab>
+
+
+    <mat-tab label="Quizzes">
+
+      <div class="bootstrap-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            
+            <div class="col-md-4" id="profile">
+
+              <div style="width: 32%;">
+
+                <div *ngFor="let quiz of quizzes">
+                  <mat-card class="example-card" id="notice">
+                      <mat-card-title>{{quiz.title}}</mat-card-title>
+                      <mat-card-content>
+                        <p>{{quiz.description}}</p>
+                        <p>Posted on: {{quiz.createdOn | date:'medium'}}</p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button mat-raised-button color="primary" style="margin-left: 80%;" *ngIf="quiz.deadline && !checkAttempt(quiz.attempts)" (click)="startQuiz(quiz.id)" >Attempt</button>
+                        <button mat-raised-button color="primary" style="margin-left: 80%;" *ngIf="!quiz.deadline && !checkAttempt(quiz.attempts)" disabled="true" >Unattemped</button>
+                        <button mat-raised-button color="primary" style="margin-left: 80%;" *ngIf="checkAttempt(quiz.attempts)" (click)="result(quiz,quiz.attempts)" >Your score</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
+              </div>
+
+            </div>
+      
+            <div class="col-md-4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </mat-tab>
+
+
+    <mat-tab label="Students"> <app-student-classroom-student-list [classroom]="classroom"></app-student-classroom-student-list> </mat-tab>
+  </mat-tab-group>

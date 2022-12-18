@@ -1,0 +1,116 @@
+<mat-card id="notice" style="text-align: center; width: 40%; margin-left: 30%; background-color: #59349ee5;">
+  <mat-card-content> <span style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 28px; color: aliceblue; text-align: center; font-weight: 400;"> {{ classroom.title }} </span> 
+  
+
+    <!-- <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 20px; float: right; font-style: italic; color: aliceblue; font-weight: 400;"> {{ classroom.students.length }} students </span> -->
+  
+  </mat-card-content>
+</mat-card>
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Notices">
+
+        <div class="bootstrap-wrapper">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4">
+                </div>
+                
+                <div class="col-md-4" id="profile">
+
+                    <div style="width: 40%;">
+
+                      <mat-card class="example-card" id="newNotice">
+                        <mat-card-title style="margin-bottom: 20px;"> <span style="font-weight: 400;"> Post a new notice </span> </mat-card-title>
+                        <mat-card-content style="margin-bottom: 10px;">
+                            <p style="font-size: 20px; font-weight: 200;"> Share something with your students </p>
+                        </mat-card-content>
+                        <mat-card-actions style="margin-bottom: 10px;">
+                          <button mat-raised-button style="background-color: rgba(74, 11, 190, 0.788); color: white; margin-left: 80%;" (click)="openNoticeForm()">POST</button>
+                        </mat-card-actions>
+                      </mat-card>
+  
+                      <div *ngFor="let notice of notices">
+                        <mat-card class="example-card" id="notice">
+                            <mat-card-title style="margin-bottom: 20px; font-weight: 400;">{{notice.title}}</mat-card-title>
+                            <mat-card-content style="margin-bottom: 10px;">
+                              <p style=" word-wrap: break-word;font-size: 20px; font-weight: 200;">{{notice.description}}</p>
+                              <p style=" word-wrap: break-word;font-size: 20px; font-weight: 200;"><span style="font-weight: 400;"> posted on: </span> {{notice.createdOn | date:'medium'}} </p>
+                            </mat-card-content>
+                            <mat-card-actions style="margin-bottom: 10px;">
+                              <div>
+                                <button mat-stroked-button color="primary" style="margin-left: 64%;" (click)="commentBox(notice)">Comments</button>
+                                <button mat-raised-button color="warn" style="margin-left: 10px;" >Delete</button>
+                              </div>
+                              
+                            </mat-card-actions>
+                          </mat-card>
+                        </div>
+
+                    </div>
+
+
+                </div>
+          
+                <div class="col-md-4">
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </mat-tab>
+
+
+    <mat-tab label="Quizzes">
+
+      <div class="bootstrap-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            
+            <div class="col-md-4" id="profile">
+
+              <div style="width: 40%;">
+
+                <mat-card class="example-card" id="newNotice">
+                  <mat-card-title style="margin-bottom: 20px;">Post a new Quiz</mat-card-title>
+                  <mat-card-content style="margin-bottom: 20px;">
+                    <p style="font-size: 20px; font-weight: 200;">Test your students skills</p>
+                  </mat-card-content>
+                  <mat-card-actions style="margin-bottom: 20px;">
+                    <button mat-button style="background-color: rgba(74, 11, 190, 0.788); color: white; margin-left: 80%;" (click)="openQuizForm()">POST</button>
+                  </mat-card-actions>
+                </mat-card>
+
+              <div *ngFor="let quiz of quizzes">
+                <mat-card class="example-card" id="notice">
+                    <mat-card-title style="margin-bottom: 20px;">{{quiz.title}}</mat-card-title>
+                    <mat-card-content style="margin-bottom: 20px;">
+                      <p style=" word-wrap: break-word;font-size: 20px; font-weight: 200;">{{quiz.description}}</p>
+                      <p style=" word-wrap: break-word;font-size: 20px; font-weight: 200;"><span style="font-weight: 400;"> posted on: </span> {{quiz.createdOn | date:'medium'}} </p>
+                    </mat-card-content>
+                    <mat-card-actions style="margin-bottom: 20px;">
+                      <div>
+                        <button mat-stroked-button color="primary" style="margin-left: 64%;" (click)="attempts(quiz)" >Attempts</button>
+                        <button mat-raised-button color="warn" style="margin-left: 10px;" >Delete</button>
+                      </div>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+
+              </div>
+
+            </div>
+      
+            <div class="col-md-4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </mat-tab>
+
+
+    <mat-tab label="Students"> <app-students-list [classroom]="classroom"></app-students-list> </mat-tab>
+  </mat-tab-group>

@@ -1,0 +1,18 @@
+<div style="width: 500px;height: 700px">
+    <h1> {{attempts.length}} Attempts </h1>
+
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+
+        <div>
+
+            <div *ngFor="let attempt of attempts" style="width: 100%;">
+                <mat-card id="notice">
+                 <mat-card-content> <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 18px; font-weight: 400;"> <span style="font-weight: 400; font-size: 20px;">{{attempt.studentName}}</span> attempted </span>  <button style="float: right; margin-bottom: 20px;" mat-raised-button color="primary" (click)="result(attempt,quiz)">View score</button> </mat-card-content>
+               </mat-card>
+                </div>
+
+        </div>
+
+        
+      </cdk-virtual-scroll-viewport>
+</div>

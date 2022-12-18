@@ -1,0 +1,36 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4" id="profile">
+            
+          <div>
+
+            <div style="margin:20px" *ngIf="classroom.students.length">
+
+              <span style="font-weight: 300; font-size: 20px;"> {{classroom.students.length}} students have enrolled to this classroom </span>         
+
+            </div>
+
+            <div style="margin:20px" *ngIf="classroom.students.length === null || classroom.students.length === 0 ">
+
+              <span style="font-weight: 300; font-size: 20px;"> No students have enrolled to this classroom yet </span>         
+
+            </div>
+
+            <div *ngFor="let student of students" style="width: 100%;">
+             <mat-card id="notice">
+              <mat-card-content> <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 18px; font-weight: 400;"> {{student.username}} </span> <button style="float: right; margin-bottom: 20px;" mat-raised-button color="warn" (click)="removeStudentFromClassroom(student.id)">Remove</button></mat-card-content>
+            </mat-card>
+             </div>
+
+          </div>
+
+        </div>
+  
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,93 @@
+<div id="box">
+
+  <mat-stepper #stepper orientation="vertical">
+    <mat-step errorMessage="Name is required.">
+      
+        <ng-template matStepLabel>Quiz details</ng-template>
+
+        <div style="margin-top: 10px;">
+          <mat-form-field appearance="fill">
+            <mat-label>Give your quiz a title</mat-label>
+            <input matInput placeholder="Title" [formControl]="title" required>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Add description</mat-label>
+            <textarea matInput placeholder="Write something about your quiz" [formControl]="description" style="height: 100px; width: 200px"></textarea>
+          </mat-form-field>
+        </div>
+
+        
+
+        <div style="margin-top: 10px;">
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+    <mat-step errorMessage="Address is required.">
+      
+        <ng-template matStepLabel>Add questions</ng-template>
+
+        <div style="margin-top: 10px; margin-bottom: 10px;">
+          <button mat-raised-button color="primary" (click)="questionForm()">Add a question</button>
+        </div>
+        
+        <div *ngFor="let question of questions" style="margin-top: 10px;">
+
+            <mat-card class="example-card" style="border: 1px; border-style: solid">
+                <mat-card-title>{{question.title}} </mat-card-title>
+                <mat-card-content>
+                  <h3> options - {{question.options[0]}}, {{question.options[1]}}, {{question.options[2]}}, {{question.options[3]}}</h3>
+                  <p>{{question.marks}} marks</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button color="warn" (click)="popQuestion(questions.indexOf(question))">Delete</button>
+                </mat-card-actions>
+              </mat-card>
+
+        </div>
+
+        <div style="margin-top: 10px;">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+    <mat-step>
+
+      <ng-template matStepLabel>Finish it up</ng-template>
+      
+      <div style="margin-top: 10px;">
+        <h3>Duration of the exam (in minutes)</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>duration</mat-label>
+          <input matInput type="number" [formControl]="duration">
+        </mat-form-field>
+      </div>
+
+      <div style="margin-top: 10px;">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Set the deadline</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="deadline">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+      <div style="margin-top: 10px;">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="submit()">submit</button>
+      </div>
+
+    </mat-step>
+  </mat-stepper>
+
+</div>

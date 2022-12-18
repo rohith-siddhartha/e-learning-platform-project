@@ -1,0 +1,32 @@
+<div style="margin:20px; margin-left: 40%;" *ngIf="classes.length === null || classes.length === 0 ">
+
+  <span style="font-weight: 300; font-size: 20px;"> You have not enrolled to any classroom yet </span>    
+
+</div>
+
+<mat-grid-list cols="4" rowHeight="280px">
+    <mat-grid-tile *ngFor="let class of classes">
+
+          <mat-card class="example-card">
+            <div style="display: block; margin-left: 0px;">
+              <a [routerLink]="'/student/classroom/' + class.id" style="text-decoration: none;"> <mat-card-title><h1 id="title">{{class.title}}</h1></mat-card-title> </a>
+            </div>
+
+            <div>
+              <mat-card-subtitle> <h3> by {{class.instructors[0].username}} </h3> </mat-card-subtitle>
+              <!-- <h3 *ngIf="class.students"> {{class.students.length}} </h3> -->
+            </div>
+
+            <mat-card-content>
+              <p>{{class.description}}</p>
+            </mat-card-content>
+            <!-- <mat-card-actions>
+              <button mat-raised-button color="primary" style="margin-bottom:10px; font-size:12px;" >View Activity</button>
+            </mat-card-actions> -->
+          </mat-card>
+
+    </mat-grid-tile>
+    <!-- <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile> -->
+  </mat-grid-list>

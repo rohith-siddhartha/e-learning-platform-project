@@ -1,0 +1,13 @@
+.example-viewport {
+    height: 600px;
+    width: 500px;
+    border: 1px solid black;
+  }
+
+  #notice {
+    margin: 10px;
+    width: 442px;
+    height: 30px;
+    border: 1px;
+    border-style: 1px;
+}

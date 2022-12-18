@@ -1,0 +1,22 @@
+<div style="width: 500px;height: 600px">
+    <h1> Comments </h1>
+
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+        <!-- <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div> -->
+
+        <div>
+            <app-comments *ngFor="let comment of commentsData" [comment]="comment" [notice]="data.noticeEntity" > </app-comments>
+        </div>
+
+        
+      </cdk-virtual-scroll-viewport>
+
+    
+    <div style="margin: 20px;">
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Post a comment</mat-label>
+            <textarea matInput [(ngModel)]="comment.content"></textarea>
+          </mat-form-field>
+          <button mat-raised-button  color="primary" (click)="addComment(null)" style="margin-left: 70%;">comment</button>
+    </div>
+</div>
